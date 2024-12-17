@@ -2,7 +2,6 @@ package postgresql
 
 import (
 	"context"
-	"log"
 
 	"github.com/Masterminds/squirrel"
 	"github.com/dannamer/JavaCode-test/internal/model"
@@ -53,7 +52,6 @@ func (r *WalletRepo) ProcessTransaction(ctx context.Context, wallet model.Wallet
 	}()
 
 	err = r.UpdatedWallet(ctx, wallet, tx)
-	log.Println(wallet.Balance)
 	if err != nil {
 		logrus.Errorf("Failed to update wallet with UUID %s: %v", wallet.UUID, err)
 		return uuid.Nil, err
